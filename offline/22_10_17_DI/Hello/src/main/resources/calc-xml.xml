@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<!-- xml로 bea을 직접 설정 -->
+	<bean id="calculator" class="com.mycom.myapp.calc.xml.Calculator"></bean>
+	<!-- bean이 많아지면 xml이 길어진다. -->
+	
+</beans>
