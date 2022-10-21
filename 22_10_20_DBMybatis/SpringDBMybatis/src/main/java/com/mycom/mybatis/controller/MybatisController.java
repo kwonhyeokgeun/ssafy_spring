@@ -1,6 +1,8 @@
 package com.mycom.mybatis.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,6 +62,46 @@ public class MybatisController {
 	public int empDelete(int employeeId) {		// FrontEnd 에서 json 으로 데이터가 넘어오지 않는다.
 		System.out.println(employeeId);		
 		int ret = service.empDelete(employeeId);
+		return ret;
+	}
+	
+	
+	@GetMapping("/empListParameterMap")
+	@ResponseBody
+	public List<EmpDto> empListParameterMap(String firstName, String lastName) {		
+		System.out.println("empListParameterMap");
+		Map<String, String> map= new HashMap<String, String>();
+		map.put("firstName",firstName);
+		map.put("lastName",lastName);
+		
+		
+		List<EmpDto> ret = service.empListParameterMap(map);
+		return ret;
+	}
+	
+	@GetMapping("/empListParameterMap2")
+	@ResponseBody
+	public List<EmpDto> empListParameterMap2(String firstName, String lastName) {		
+		System.out.println("empListParameterMap2");
+		
+		List<EmpDto> ret = service.empListParameterMap2(firstName, lastName);
+		return ret;
+	}
+	
+	@GetMapping("/empListParameterMap3")
+	@ResponseBody
+	public List<EmpDto> empListParameterMap3(EmpDto empDto) {
+		System.out.println("empListParameterMap3");
+		
+		List<EmpDto> ret = service.empListParameterMap3(empDto);
+		return ret;
+	}
+	
+	@GetMapping("/empListLike")
+	@ResponseBody
+	public List<EmpDto> empListLike(String firstName) {
+		System.out.println("empListLike");
+		List<EmpDto> ret = service.empListLike(firstName);
 		return ret;
 	}
 }

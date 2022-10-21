@@ -14,6 +14,14 @@
 	<button id="btnEmpUpdate">Emp 수정</button>
 	<button id="btnEmpDelete">Emp 삭제</button>
 	
+	<hr>
+	<button id="btnEmpListParameterMap">Emp map 목록 리스트</button>
+	<button id="btnEmpListParameterMap2">Emp map 목록 리스트</button>
+	<button id="btnEmpListParameterMap3">Emp map 목록 리스트</button>
+	
+	<hr>
+	<button id="btnEmpLike">Emp Like</button>
+	
 	<script>
 		window.onload = function () {
 			document.querySelector("#btnEmpDetail").addEventListener("click", async function () {
@@ -118,6 +126,68 @@
 				}
 			});
 			
+			document.querySelector("#btnEmpListParameterMap").addEventListener("click", async function () {
+	            let firstName = "길동";
+	            let lastName = "홍";
+	            let url = "/mybatis/empListParameterMap";
+	            let urlParams = `?firstName=${firstName}&lastName=${lastName}`
+	            try {                    
+	                 let response = await fetch(url+urlParams);
+	                 let data = await response.json();
+	                 console.log(data);        
+	                 
+	             } catch (error){
+	                 console.log(error);
+	             }
+	        });
+	        
+	        
+	        
+
+	        document.querySelector("#btnEmpListParameterMap2").addEventListener("click", async function () {
+	            let firstName = "길동";
+	            let lastName = "홍";
+	            let url = "/mybatis/empListParameterMap2";
+	            let urlParams = `?firstName=${firstName}&lastName=${lastName}`
+	            try {                    
+	                 let response = await fetch(url+urlParams);
+	                 let data = await response.json();
+	                 console.log(data);        
+	                 
+	             } catch (error){
+	                 console.log(error);
+	             }
+	        });
+			
+	        document.querySelector("#btnEmpListParameterMap3").addEventListener("click", async function () {
+	            let firstName = "길동";
+	            let lastName = "홍";
+	            let url = "/mybatis/empListParameterMap3";
+	            let urlParams = `?firstName=${firstName}&lastName=${lastName}`
+	            try {                    
+	                 let response = await fetch(url+urlParams);
+	                 let data = await response.json();
+	                 console.log(data);        
+	                 
+	             } catch (error){
+	                 console.log(error);
+	             }
+	        });
+	        
+	        
+	        document.querySelector("#btnEmpLike").addEventListener("click", async function () {
+	            let firstName = "길동";
+	            let url = "/mybatis/empListLike";
+	            let urlParams = `?firstName=${firstName}`
+	            try {                    
+	                 let response = await fetch(url+urlParams);
+	                 let data = await response.json();
+	                 console.log(data);        
+	                 
+	             } catch (error){
+	                 console.log(error);
+	             }
+	        });
 		}
 	</script>
 </body>

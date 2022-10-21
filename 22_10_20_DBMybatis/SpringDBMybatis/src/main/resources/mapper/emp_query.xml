@@ -31,4 +31,49 @@
 		delete from emp
 		where employeeId = #{employeeId}
 	</delete>
+	
+	<select id="empListParameterMap" parameterType="map" resultType="com.mycom.mybatis.dto.EmpDto">
+		select employeeId,first_name,last_name,email,hiredate
+			from emp
+		  where first_name = #{firstName}
+		  and last_name = #{lastName}
+	</select>
+	
+	<select id="empListParameterMap2" parameterType="map" resultType="com.mycom.mybatis.dto.EmpDto">
+		select employeeId,first_name,last_name,email,hiredate
+			from emp
+		  where first_name = #{firstName}
+		  and last_name = #{lastName}
+	</select>
+	
+<!-- 	<select id="empListParameterMap3" parameterType="map" resultType="com.mycom.mybatis.dto.EmpDto"> -->
+<!-- 		select employeeId,first_name,last_name,email,hiredate -->
+<!-- 			from emp -->
+<!-- 		  where first_name = #{firstName} -->
+<!-- 		  and last_name = #{lastName} -->
+<!-- 	</select> -->
+	
+	<select id="empListParameterMap3" parameterType="map" resultMap="empMap">
+		select employeeId,first_name,last_name,email,hiredate
+			from emp
+		  where first_name = #{firstName}
+		  and last_name = #{lastName}
+	</select>
+	
+	
+	<resultMap type="com.mycom.mybatis.dto.EmpDto" id="empMap">
+		<result property="employeeId" column="employeeId"></result>
+		<result property="firstName" column="first_name"></result>
+		<result property="lastName" column="last_name"></result>
+		<result property="email" column="email"></result>
+		<result property="hireDate" column="hiredate"></result>
+	</resultMap>
+	
+	<select id="empListLike" parameterType="String" resultMap="empMap">
+		select employeeId,first_name,last_name,email,hiredate
+			from emp
+		  where first_name like concat('%', #{firstName}, '%')
+	</select>
+	
+	
 </mapper>

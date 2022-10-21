@@ -12,6 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.mycom.mybatis">
+		<!-- <level value="info" /> -->
 		<level value="debug" />
 	</logger>
 	
