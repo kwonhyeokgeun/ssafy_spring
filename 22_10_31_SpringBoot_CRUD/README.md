@@ -1,4 +1,4 @@
-lombok으로 setter getter tostring 대체하기(https://www.notion.so/Spring-aca18179c0e94f4b8d3293b8e752fc2e)
+lombok으로 setter getter tostring 대체하기(https://www.notion.so/Spring-aca18179c0e94f4b8d3293b8e752fc2e) + 
 
 #초기화면  
 ![image](https://user-images.githubusercontent.com/49871871/198974601-23af666e-9fa6-4e95-baad-d2ed161f13e3.png)
