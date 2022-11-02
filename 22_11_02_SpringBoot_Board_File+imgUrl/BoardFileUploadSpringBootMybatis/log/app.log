@@ -1,0 +1,38 @@
+2022-11-02 15:25:43.543  INFO 1816 --- [restartedMain] rdFileUploadSpringBootMybatisApplication : Starting BoardFileUploadSpringBootMybatisApplication using Java 1.8.0_345 on LAPTOP-CGRS3RFM with PID 1816 (C:\Users\samsung\Documents\workspace-sts-3.9.14.RELEASE\BoardFileUploadSpringBootMybatis\bin\main started by samsung in C:\Users\samsung\Documents\workspace-sts-3.9.14.RELEASE\BoardFileUploadSpringBootMybatis)
+2022-11-02 15:25:43.552  INFO 1816 --- [restartedMain] rdFileUploadSpringBootMybatisApplication : No active profile set, falling back to 1 default profile: "default"
+2022-11-02 15:25:43.699  INFO 1816 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-02 15:25:43.703  INFO 1816 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-02 15:25:46.299  INFO 1816 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-02 15:25:46.327  INFO 1816 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-02 15:25:46.327  INFO 1816 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-02 15:25:46.508  INFO 1816 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-02 15:25:46.509  INFO 1816 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2803 ms
+2022-11-02 15:25:47.292  INFO 1816 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-02 15:25:47.592  INFO 1816 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-02 15:25:47.655  INFO 1816 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-02 15:25:47.678  INFO 1816 --- [restartedMain] rdFileUploadSpringBootMybatisApplication : Started BoardFileUploadSpringBootMybatisApplication in 5.151 seconds (JVM running for 7.955)
+2022-11-02 15:26:41.626  INFO 1816 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-02 15:26:41.627  INFO 1816 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-02 15:26:41.628  INFO 1816 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-02 15:27:31.374  INFO 1816 --- [RMI TCP Connection(11)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-02 15:27:32.082  INFO 1816 --- [RMI TCP Connection(11)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-02 15:27:32.083  INFO 1816 --- [RMI TCP Connection(11)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-02 16:50:55.287  INFO 11168 --- [restartedMain] rdFileUploadSpringBootMybatisApplication : Starting BoardFileUploadSpringBootMybatisApplication using Java 1.8.0_345 on LAPTOP-CGRS3RFM with PID 11168 (C:\Users\samsung\Documents\workspace-sts-3.9.14.RELEASE\BoardFileUploadSpringBootMybatis\bin\main started by samsung in C:\Users\samsung\Documents\workspace-sts-3.9.14.RELEASE\BoardFileUploadSpringBootMybatis)
+2022-11-02 16:50:55.288  INFO 11168 --- [restartedMain] rdFileUploadSpringBootMybatisApplication : No active profile set, falling back to 1 default profile: "default"
+2022-11-02 16:50:55.355  INFO 11168 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-02 16:50:55.355  INFO 11168 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-02 16:50:57.716  INFO 11168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-02 16:50:57.728  INFO 11168 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-02 16:50:57.728  INFO 11168 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-02 16:50:57.910  INFO 11168 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-02 16:50:57.910  INFO 11168 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2555 ms
+2022-11-02 16:50:58.907  INFO 11168 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-02 16:50:59.189  INFO 11168 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-02 16:50:59.239  INFO 11168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-02 16:50:59.252  INFO 11168 --- [restartedMain] rdFileUploadSpringBootMybatisApplication : Started BoardFileUploadSpringBootMybatisApplication in 4.536 seconds (JVM running for 6.396)
+2022-11-02 16:51:03.614  INFO 11168 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-02 16:51:03.615  INFO 11168 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-02 16:51:03.618  INFO 11168 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-11-02 16:52:36.066  INFO 11168 --- [RMI TCP Connection(11)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-02 16:52:36.754  INFO 11168 --- [RMI TCP Connection(11)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-02 16:52:36.756  INFO 11168 --- [RMI TCP Connection(11)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
