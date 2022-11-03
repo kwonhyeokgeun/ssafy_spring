@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div style="color: blue">직접 style 적용</div>
+      <div style="background-color: yellow">직접 style 적용</div>
+      <br />
+
+      <div v-bind:style="{color: myColor}">v-bind로 style 적용</div>
+      <div v-bind:style="{'background-color': myBgColor}">
+        v-bind로 style 적용, -를 쓸때는 ''로 감사줘야함 ('background-color')
+      </div>
+      <div v-bind:style="{backgroundColor: myBgColor}">
+        직접 style 적용, backgroundColor로 ''로 안감싸고 카멜표기법으로 쓸수도
+        있음
+      </div>
+
+      <br />
+      <!--<div :style="myStyle">객체지정</div>
+      <br />-->
+    </div>
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: function () {
+          return {
+            myColor: "blue",
+            myBgColor: "yellow",
+            myStyle: { color: "blue", backgroundColor: "yellow" },
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

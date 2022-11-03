@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <span>클릭 카운트 : {{count}}</span>
+      <button>클릭</button>
+    </div>
+
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          count: 0,
+        },
+        beforeCreate: function () {
+          console.log("beforeCreate count: " + this.count); //아직 count 생성 전이라 undefined
+        },
+        created: function () {
+          console.log("created count: " + this.count); //잘 나옴
+          console.log("created 연결된 DOM 엘리먼트: ", this.$el); //이건 undefined, el은 마운트로 연결되야 쓸수있음
+        },
+        mounted: function () {
+          console.log("mounted count: " + this.count); //잘나옴
+          console.log("mount 연결된 DOM 엘리먼트: ", this.$el); //잘나옴
+        },
+        updated: function () {
+          console.log("updated 호출됨");
+          console.log("update count: " + this.count);
+        },
+      });
+    </script>
+  </body>
+</html>

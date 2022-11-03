@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- false면 아예 없음-->
+      v-if
+      <div v-if="flagIf">v-if 보이나요?</div>
+
+      <!-- false면 display:none;-->
+      v-show
+      <div v-show="flagShow">v-show 보이나요?</div>
+
+      <!-- 배열 v-for로 출력-->
+      <br />
+      v-for 배열
+      <ul>
+        <li v-for="(item, index) in arrayItems" :key="index">
+          {{item}} {{index}}
+        </li>
+      </ul>
+
+      <br />
+      v-for 오브젝트
+      <ul>
+        <li v-for="(item, index) in objectArrayItems" :key="index">
+          {{item.name}} : {{item.price}} , {{index}}
+        </li>
+      </ul>
+
+      <!-- v-for 반복적인 rendering을 할때 v-for와 v-if 동시에 사용하지 않기를 권장함-->
+      <!-- computed를 활용!-->
+      <br />
+      v-for에 조건달기
+      <ul>
+        <li v-for="(item, index) in filteredItem" :key="index">
+          {{item.name}} : {{item.price}} , {{index}}
+        </li>
+      </ul>
+    </div>
+    <script>
+      let studyList = ["java", "spring", "vue"]; //배열
+      let objectList = [
+        { name: "java", price: 2000 },
+        { name: "spring", price: 3000 },
+        { name: "vue", price: 4000 },
+        { name: "boot", price: 5000 },
+      ];
+      const vue = new Vue({
+        el: "#app",
+        data() {
+          return {
+            flagIf: false, //v-if
+            flagShow: false, //v-for
+            arrayItems: studyList, //for
+            objectArrayItems: objectList, //for
+          };
+        },
+        computed: {
+          filteredItem: function () {
+            return this.objectArrayItems.filter((el) => el.price > 3000); //3000보다 큰것만
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

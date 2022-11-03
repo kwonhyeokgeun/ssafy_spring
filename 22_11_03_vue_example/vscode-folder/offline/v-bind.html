@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      id에 텍스트로 그대로 들어감
+      <div id="bindId">{{textId}}</div>
+      <br />
+
+      id에 vue설정한 bindId가 들어감
+      <div v-bind:id="bindId">{{textId}}</div>
+      <br />
+
+      url 넣기<br />
+      <a v-bind:href="bindUrl">{{bindUrl}}</a>
+      <br />
+      <br />
+
+      data-bindId로 vue 설정한 boardId 넣기
+      <div v-bind:data-boardId="boardId">6789 게시글</div>
+
+      <br />
+      vue로 설정한 이미지를 src로 넣기
+      <img v-bind:src="bindSrc" alt="son" />
+      <br />
+      <br />
+      vue로 설정한 값을 value로 넣기<br />
+      <input type="text" v-bind:value="textVal" />
+    </div>
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: function () {
+          return {
+            textId: "v-bind-Id",
+            bindId: "12345",
+            textUrl: "google.com",
+            bindUrl: "http://google.com",
+
+            boardId: "6789",
+
+            textSrc: "lee",
+            bindSrc: "./img/son.jfif",
+            bindSubSrc: "./img/son.jfif",
+            srcId: "picture",
+
+            textVal: "안녕",
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

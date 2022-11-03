@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Hello, Vue!</title>
+  </head>
+  <body>
+    <div id="app">{{ text1 }}</div>
+    <script>
+      const instance = new Vue({
+        el: "#app",
+        data: function () {
+          return {
+            text1: "Vue LifeCycle",
+          };
+        },
+        beforeCreate: function () {
+          console.log("beforeCreate");
+        },
+        created: function () {
+          console.dir(this);
+          console.log("created");
+          this.text1 = "Hello !!"; // when data changed, beforeUpdate(), update() NOT called
+        },
+        beforeMount: function () {
+          console.log("beforMount");
+        },
+        mounted: function () {
+          console.log("mounted");
+          // 아래 data 를 변경하지 않으면 beforeUpdate(), update() 호출되지 않는다.
+          // this => Vue 객체
+          // this.text1 => Vue 의 property 로
+          // 주의! this.data.text1 X
+          // 위와 같이 쓰면 Hello !! 로 남아있고 오류 발생 확인
+          this.text1 = "Hello2 !!"; // when data changed, beforeUpdate(), update() called
+          // beforeMount 에서는 beforeUpdate(), update() NOT called
+        },
+        beforeUpdate: function () {
+          console.log("beforeUpdate");
+        },
+        // updated: function(){
+        //     console.log("updated")
+        // },
+
+        // arrow function 인 경우 this 주의 <= arrow 쓰지 말자!
+        updated: () => {
+          console.log(this);
+          console.log(this.text1);
+          console.log(instance.text1);
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      텍스트로(v-text)
+      <div v-text="css"></div>
+      <br />
+
+      css적용(v-html)
+      <div v-html="css"></div>
+
+      <br />
+      잘못된 사용 예
+      <div v-once>{{css}}</div>
+    </div>
+    <script>
+      let value = {
+        css: `<span style="background-color: lightgrey">회색</span>`,
+      };
+      const vue = new Vue({
+        el: "#app",
+        data: function () {
+          return value;
+        },
+      });
+
+      setTimeout(changeCss, 5000); //5초뒤에 css다르게 적용되도록
+
+      function changeCss() {
+        value.css = `<span style="background-color: green">녹색</span>`;
+      }
+    </script>
+  </body>
+</html>

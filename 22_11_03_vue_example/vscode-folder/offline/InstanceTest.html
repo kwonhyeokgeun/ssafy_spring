@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">{{text}}</div>
+
+    <script>
+      const vue = new Vue({
+        //el: "div", //el 설정하지 않음
+        data() {
+          return {
+            text: "Hello vue!!",
+          };
+        },
+      });
+
+      vue.$mount("#app"); //여기서 el설정가능
+    </script>
+  </body>
+</html>

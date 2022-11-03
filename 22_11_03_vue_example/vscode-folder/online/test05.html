@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!--그냥 문자열로 들어옴-->
+      <div>메세지 : {{message}}</div>
+
+      <!--html 태그로 사용가능-->
+      <div v-html="message"></div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          message: "<h2>Hello Vue~!</h2>",
+        },
+      });
+    </script>
+  </body>
+</html>

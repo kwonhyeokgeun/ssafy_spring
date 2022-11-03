@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{text}}<br />
+      {{text2.slice(0,4)}}<br />
+      {{text2Prefix}}
+    </div>
+    <!-- document.querySelector().innerHTML = HTML + DATA -->
+    <!-- Componenet = HTML + CSS + DATA(JS) -->
+    <!-- . HTML => 복수개의 다양한 부모자식 관계의 Component들로 구성 -->
+    <!-- SPA index.html 하나가 어머어마한 크기의 파일 문제-->
+
+    <!-- 결국 표준 ..html 의 구조 탈피 ==> 비표준 개발 방법으로 전환-->
+    <!-- vue는 어떤 비표준 개발?  .vue 파일로 component를 구성
+      ==> .index.html이 결국 여러개의 .vue로 쪼개어서 개발된후 합쳐지는 과정을 거친다  -->
+
+    <!-- .vue 파일은 <template><css><script> 3개의 요소로 만들어 지는데, 브라우저는 이를 실행 불가(비표준)-->
+    <!-- .vue 파일을 실행해서 테스트( 백엔드통신, 화면 이벤트처리 ...) 하려면 
+    compile 과정을 통해서 다시 표준 html로 전환하는 과정이 필요한데 이 과정을 담당하는 게 VUE_CLI이다.-->
+    <!-- .vue 파일을 개발하는 과정 전체에서 VUE_CLI는 Compile(npm run build) -> Run( npm run service ) 과정을 거쳐 실행-->
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data() {
+          return {
+            text: "Hello vue!!",
+            text2: "Hello world!!",
+          };
+        },
+        computed: {
+          //computed 각 항목들이 method로 구성
+          text2Prefix: function () {
+            console.log("text2Prefix");
+            return this.text2.slice(0, 4);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
