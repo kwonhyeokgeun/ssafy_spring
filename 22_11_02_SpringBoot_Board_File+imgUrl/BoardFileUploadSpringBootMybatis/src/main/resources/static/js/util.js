@@ -93,6 +93,7 @@ function makePaginationHtml(listRowCount, pageLinkCount, currentPageIndex,
 
 function initUserInfo(page){
 	if(page=="board"){
+		
 		document.querySelector("#imgUserProfileImageUrl").setAttribute("src",sessionStorage.getItem("userProfileImageUrl"));
 	}else if(page=="admin"){
 		;
