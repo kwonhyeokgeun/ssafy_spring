@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    watch는 {{}}안에 보여주기 위한 function이 아니다<br>
+    대상이 되는 property의 값이 변경되면 1회 호출되고 parameter로 변경전, 변경후 값을 전달<br>
+    대상이 되는 property가 update되면 1회 호출된다<br>
+    대상이 변경되면 호출되는 일종의 callback<br>
+    <br>
+    <div>{{text}}</div>
+    <div>{{reversedText }}</div>
+    <div>{{reversedText }}</div>
+    <button @click="changeText">click</button>
+    <br>
+
+
+  </div>
+  <script>
+    var OuterCount = 0;
+    const vue = new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          text : '안녕하세요. vue',
+          reversedText:'',
+        };
+      },
+      watch: {
+        text: function(newVal, oldVal){
+          console.log(newVal ,'/',oldVal)
+          this.reversedText = this.text.split('').reverse().join('');
+        },
+      },
+      methods: {
+        changeText(){
+          this.text='hello vue'
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

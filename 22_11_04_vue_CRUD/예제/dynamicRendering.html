@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h4>select</h4>
+    <select v-model="selectValue" name="" id="">
+      <option v-for="(option, index) in selectOptionList" :key="index" :value="option.value">{{option.text}}</option>
+    </select>
+    {{selectValue}}
+
+
+    <br>
+    <h4>select - chagne alert</h4>
+    <select v-model="selectValue2" name="" id="" @change="changeSelect">
+      <option v-for="(option, index) in selectOptionList" :key="index" :value="option.value">{{option.text}}</option>
+    </select>
+    {{selectValue2}}
+
+    
+    <br>
+    <h4>Table</h4>
+    <table>
+      <thead>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in trList" :key="index">
+          <td>{{item.no}}</td>
+          <td>{{item.title}}</td>
+          <td>{{item.writer}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <h4>Table 클릭하면 상세 정보</h4>
+    <table>
+      <thead>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+      </thead>
+      <tbody >
+        <tr v-for="(item, index) in trList" :key="index"  @click="clickTr(item.no)" style="cursor: pointer">
+          <td>{{item.no}}</td>
+          <td>{{item.title}}</td>
+          <td>{{item.writer}}</td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+
+
+  </div>
+  <script>
+    let itemList=[
+      {no:1, title:'ㅎㅇ', writer:'ssafy'},
+      {no:2, title:'vue', writer:'부울경'},
+      {no:3, title:'spring', writer:'3반'},
+    ]
+    const vue = new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          selectOptionList:[
+            { text: 'Camping', value: 'C' },
+            { text: 'Drawing', value: 'D' },
+            { text: 'Singing', value: 'S' },
+          ],
+          selectValue:'D',
+          selectValue2:'D',
+          trList: itemList,
+
+        };
+      },
+      methods: {
+        changeSelect(){
+          alert(this.selectValue)
+        },
+        clickTr(no){  //클릭한 no 띄우기
+          alert(no)
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

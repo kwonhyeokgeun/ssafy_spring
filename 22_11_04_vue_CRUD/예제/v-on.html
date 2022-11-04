@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    잘못된 v-on
+    <button v-on:click="OuterCount+=1">outerCount++ 이건 에러임 vue객체가 아님</button>
+
+    <button v-on:click="alert(1)">alert() 이것도 vue밖에있어서 에러임</button>
+
+    <br />
+    정상 v-on<br />
+    <button v-on:click="count+=1">count++</button>
+
+    <button v-on:click="myAlert(count)">myAlert로 count값 alert</button>
+
+    <br />
+    <button v-on:click="sayCount(count)">sayCount로 인자를통해 count값 보여주기</button>
+    {{countMessage}}
+
+    <br />
+    <button v-on:click="sayCount(count)">sayCount2로 인자가 아닌 this로 count값 보여주기</button>
+    {{countMessage}}
+
+    <br /><br />
+
+    마우스 이벤트
+    <div v-on:mouseover="mouseMessage = '마우스 오버'" @mouseout="mouseMessage='마우스 아웃'">
+      {{mouseMessage}}
+    </div>
+    <br />
+    키 입력 이벤트
+    <input type="text" v-on:keyup="showKey" placeholder="아무키나 입력하세요" />
+
+    <br />
+    enter키(코드 : 13) 입력 이벤트
+    <input type="text" v-on:keyup.13="endterKey" placeholder="아무키나 입력하세요" />
+
+    <br />
+    멀티 키(Ctrl c) 입력 이벤트
+    <input type="text" v-on:keydown="multiKey" placeholder="아무키나 입력하세요" />
+    <br>
+  </div>
+  <script>
+    var OuterCount = 0;
+    const vue = new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          count: 0,
+          countMessage: "",
+          mouseMessage: "마우스를 올려보세요",
+        };
+      },
+      methods: {
+        myAlert: function (param) {
+          alert(param);
+        },
+        sayCount: function (count) {
+          //인자로 변수 받음
+
+          this.countMessage = count + "번 클릭했습니다.";
+        },
+        sayCount2: function () {
+          //인자가 아닌 this로 변수사용
+          this.countMessage = this.count + "번 클릭했습니다.";
+        },
+        showKey: function (e) {
+          //사용할때 e는 인자로 안넣어도 됨
+          alert(e.key + " : " + e.keyCode);
+        },
+        endterKey: function (e) {
+          alert("enter key");
+        },
+        multiKey: function (e) {
+          //ctrl-v
+          if (e.keyCode == 86 && e.ctrlKey) alert("ctrl - v");
+
+          //ctrl-c
+          if (e.keyCode == 67 && e.ctrlKey) alert("ctrl - c");
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>

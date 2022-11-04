@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h4>Input Text</h4>
+    <input type="text" v-model="inputText"> 
+    {{inputText}}
+    <br>
+
+    <h4>text Area</h4>
+    <textarea v-model="textAreaText" cols="30" rows="10"></textarea>
+    {{textAreaText}}
+    <br>
+
+    <h4>Check box (체크하면 true로 바뀜)</h4>
+    <input type="checkbox" v-model="checkboxValue"  id="">
+    {{checkboxValue}}
+    <br>
+
+    <h4>Check box 여러개</h4>
+    <input type="checkbox" v-model="checkboxValueList"  id="java" value="J"> <label for="java">Java</label>
+    <input type="checkbox" v-model="checkboxValueList"  id="spring" value="S"> <label for="spring">Spring</label>
+    <input type="checkbox" v-model="checkboxValueList"  id="vue" value="V"> <label for="vue">Vue</label>
+    {{checkboxValueList}}
+
+    <br>
+    <h4>Radio</h4>
+    <input type="radio" value="F" v-model="radioValue" id="football"><label for="football">축구</label>
+    <input type="radio" value="B" v-model="radioValue" id="baseball"><label for="baseball">야구</label>
+    {{radioValue}}
+
+    <br>
+    <h4>Select</h4>
+    <select v-model="selectValue">
+      <option value="C">Camping</option>
+      <option value="D">Drawing</option>
+      <option value="S">Singing</option>
+    </select>
+    {{selectValue}}
+
+    <br>
+    <h4>Select 여러개 한개</h4>
+    <select v-model="selectValueList" multiple>
+      <option value="C">Camping</option>
+      <option value="D">Drawing</option>
+      <option value="S">Singing</option>
+    </select>
+    {{selectValueList}}
+
+  </div>
+  <script>
+    var OuterCount = 0;
+    const vue = new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          inputText: '12345',
+          textAreaText: '내용담는 textArea',
+          checkboxValue: false,
+          checkboxValueList: ['J','S'],
+          radioValue:'F',
+          selectValue:'C',
+          selectValueList:['C'],
+        };
+      },
+      methods: {
+        
+      },
+    });
+  </script>
+</body>
+
+</html>

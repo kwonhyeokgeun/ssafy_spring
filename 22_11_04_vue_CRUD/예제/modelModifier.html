@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h4>Lazy</h4>
+    글자 한개한개 변할때마다가 아닌, 전체 입력이 끝나면(포커스가 옮겨짐) 양방향 바인딩 <br>
+    <input type="text" v-model.lazy="lazyText"> {{lazyText}}
+    <br>
+
+
+    <h4>Number</h4>
+    숫자만 입력처리<br>
+    <input type="text" v-model.number="numberText"> {{numberText}}
+    <br>
+
+    <h4>Trim</h4>
+    양쪽 끝의 white space 문자 제거<br>
+    <input type="text" v-model.trim="trimText"> {{trimText}}
+    <br>
+
+  </div>
+  <script>
+    var OuterCount = 0;
+    const vue = new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          lazyText: '안녕',
+          numberText: 0,
+          trimText: ''
+        };
+      },
+      methods: {
+        
+      },
+    });
+  </script>
+</body>
+
+</html>

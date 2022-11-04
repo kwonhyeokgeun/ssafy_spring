@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" @keyup="keyHandler" @keyup.enter="enterKey" 
+      @keyup.page-down="pageDown" @keyup.delete="deleteKey">
+      <br>
+      <span> Key Code : {{keycode}} </span>
+
+    <br>
+    <br>
+    한글쓰는 방법
+    <input type="text" @input="keyHangul=$event.target.value" @keyup="hangul">
+      <br>
+      <span> Key Hangul : {{keyHangul}} </span>
+
+  </div>
+  <script>
+    var OuterCount = 0;
+    const vue = new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          keycode:0,
+          keyHangul:''
+        };
+      },
+      methods: {
+        keyHandler: function(e){ //모든 입력
+          console.log(e.key);
+          this.keycode=e.key;
+        },
+        enterKey: function(e){ //enter
+          console.log(e.key);
+          this.keycode=e.key;
+        },
+        pageDown: function(e){ 
+          console.log(e.key); //pgDn
+          this.keycode=e.key;
+        },
+        deleteKey: function(e){  //backspace, delete
+          console.log(e.key);
+          this.keycode=e.key;
+        },
+
+        hangul: function(e){  
+          console.log(keyHangul);
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>

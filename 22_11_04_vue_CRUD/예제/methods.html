@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{text}}</div>
+    methods는 여러개면 여러번 실행됨<br>
+    updated되면 또 그만큼 실행됨
+    <div>{{reversedText()}}</div>
+    <div>{{reversedText()}}</div>
+    <button @click="changeText">텍스트 바꾸기</button>
+    <br><br>
+
+    computed는 {{}} 안에 ()를 넣지 않음.<br>
+    여러번 쓰더라도 한번만 실행됨
+    <div>{{reversedText2 }}</div>
+    <div>{{reversedText2 }}</div>
+  <button @click="changeText2">텍스트 바꾸기2</button>
+
+  </div>
+  <script>
+    var OuterCount = 0;
+    const vue = new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          text : '안녕하세요. vue',
+          text2 : '안녕하세요. vue'
+        };
+      },
+      computed: {
+        reversedText2: function(){
+          console.log(this)
+          console.log("reversedText2() !!!")
+          return this.text2.split('').reverse().join('');
+        },
+      },
+      methods: {
+        reversedText: function(){
+          console.log("reversedText() !!!")
+          return this.text.split('').reverse().join('');
+        },
+        changeText: function(){
+          console.log("텍스트 바꾸기 버튼 눌러짐")
+          this.text="hello vue"
+        },
+        changeText2: function(){
+          console.log("텍스트 바꾸기2 버튼 눌러짐")
+          this.text2="hello vue"
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

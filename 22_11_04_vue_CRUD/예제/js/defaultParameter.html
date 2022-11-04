@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function emptyParam(){
+      console.log("emptyParam is called!!")
+    }
+
+    emptyParam(3);//없는 파라미터를 넣어도 오류가 나지 않음
+
+    function multiply(a,b){
+      console.log("multiply is called!!")
+      return a*b;
+    }
+
+    console.log(multiply(5,2))
+
+    //파라미터의 수가 맞지 않아도 호출됨
+    //하지만 결과는 오류가 발생할 수 있다.
+    console.log(multiply(5)) //NaN(not a number) 출력
+    console.log(multiply()) //NaN(not a number) 출력
+
+
+    //파라미터의 수가 맞지 않을 경우 기본값이 사용되도록 작성
+    function multiply2(a,b=2){
+      console.log("multiply2 is called!!")
+      return a*b;
+    }
+
+    console.log(multiply2(5)) //10 나옴
+    console.log(multiply2()) //NaN 나옴
+
+
+    function sayHello(name, message, another = '반갑습니다 ' + name){
+      console.log(name, message, another)
+    }
+
+    sayHello('길동님','안녕하세요','잘지내시죠')   //길동님 안녕하세요 잘지내시죠
+    sayHello('길동님','안녕하세요')  //길동님 안녕하세요 반갑습니다 길동님
+  </script>
+</body>
+</html>

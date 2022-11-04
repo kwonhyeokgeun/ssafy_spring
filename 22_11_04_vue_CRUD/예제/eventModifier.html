@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    전송을 누르면 defalut action으로 네이버 페이지로 이동함<br>
+    입력값이 없으면 default action을 취소하고 싶음<br>
+    event modifier는 쓰지 않고 직접 e.preventDefault() 호출 사용함
+    <form action="http://www.naver.com" target="_blank">
+      <input type="text" v-model="inputText1" >
+      <button type="submit" v-on:click="callSubmit">전송</button>
+    </form>
+
+    <br>
+    전송을 누르면 defalut action으로 네이버 페이지로 이동함<br>
+    입력값이 없으면 default action을 취소하고 싶음<br>
+    event modifier를 사용 O, 일단 browser의 action을 막고 callSubmit2를 호출
+    <form @submit.prevent="callSubmit2" action="http://www.naver.com" target="_blank" id="form2">
+      <input type="text" v-model="inputText2" >
+      <button type="submit" >전송</button>
+    </form>
+
+    <br>
+    전송을 누르면 defalut action으로 네이버 페이지로 이동함<br>
+    입력값이 없으면 default action을 취소하고 싶음<br>
+    event modifier를 사용 O, 일단 browser의 action을 막고 callSubmit3를 호출
+    <form @submit.prevent="callSubmit3" action="http://www.naver.com" target="_blank" id="form3">
+      <input type="text" v-model="inputText3" >
+      <button type="submit" >전송</button>
+    </form>
+
+  </div>
+  <script>
+    var OuterCount = 0;
+    const vue = new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          inputText1: '',
+          inputText2: '',
+          inputText3: '',
+        };
+      },
+      methods: {
+        callSubmit: function (e) {
+          console.log("callSubmit is called!!")
+          if (this.inputText1 == '') {
+            e.preventDefault(); //default action 동작안도록
+          }
+        },
+
+        callSubmit2: function (e) {
+          console.log("callSubmit2 is called!!")
+          if (this.inputText2 != '') { //이미 막았으므로 공백이 아니면 전송
+            document.querySelector("#form2").submit();
+
+          }
+        },
+        callSubmit3: function (e) {
+          console.log("callSubmit3 is called!!")
+          if (this.inputText3 != '') { //이미 막았으므로 공백이 아니면 전송
+            let form3=document.querySelector("#form3");
+            form3.target="_blank";
+            form3.action="http://www.naver.com";
+            form3.submit();
+          }
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>

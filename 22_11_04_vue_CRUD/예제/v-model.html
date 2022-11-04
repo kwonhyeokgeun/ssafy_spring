@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    v-bind로 input의 value 세팅과 변경시 적용시키기<br>
+    <input type="text" v-bind:value="inputText" v-on:input="updateInput"> {{inputText}}
+    <br><br>
+    v-model로 위에거 간단하게 하기<br>
+    <input type="text" v-model="inputText2"> {{inputText2}}
+    <br>
+
+  </div>
+  <script>
+    var OuterCount = 0;
+    const vue = new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          inputText: 'v-bind와 v-on으로 값 세팅',
+          inputText2: 'v-model로 값 세팅',
+        };
+      },
+      methods: {
+        updateInput: function (e) {
+          this.inputText = e.target.value
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>
