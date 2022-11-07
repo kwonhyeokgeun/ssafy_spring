@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+  
+</head>
+<body>
+  
+  <div id="app">
+    <div-component></div-component>
+    <br>
+    <table-component></table-component>
+  </div>
+
+  <template id="div-template">
+    <div>HTML Div Template</div>
+  </template>
+
+  <template id="table-template">
+    <table>
+      <tbody>
+        <tr><td>취미1</td><td>축구</td></tr>
+        <tr><td>취미2</td><td>음악</td></tr>
+        <tr><td>취미3</td><td>영화</td></tr>
+      </tbody>
+    </table>
+  </template>
+  <script>
+
+    Vue.component(  //전역으로 생성
+      'table-component',{
+        template:'#table-template'
+      }
+    )
+
+
+
+    // template에 해당하는 HTML을 body안에 template tag를 이용해서 표현
+    // #id 연계
+    new Vue({
+      el:'#app',
+      components: {
+        'div-component': //이름
+        {
+          template: '#div-template'
+        }
+      
+      }
+    })
+  </script>
+</body>
+</html>
