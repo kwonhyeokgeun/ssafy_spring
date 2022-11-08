@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+  
+</head>
+<body>
+  
+  <div id="app">   <!-- html을 가지고있음 -->
+    <h4>{{ message }}</h4>
+  </div>
+
+  <div id="app2">  <!-- html을 가지고있지 않음 -->
+
+  </div>
+  <script>
+    
+    new Vue({
+      el:'#app',
+      data(){
+        return{
+          message: 'Hello, Vue Template',
+        }
+      },
+    })
+
+
+    new Vue({
+      el:'#app2',
+      data(){
+        return{
+          message: 'Hello, Vue Template',
+          desc: '긴 HTML 설명 ......'
+        }
+      },
+      template:
+        `
+        <div>
+          <h4> {{ message }} </h4>
+          <p> {{ desc }} </p>
+        </div>
+        `
+    })
+  </script>
+</body>
+</html>

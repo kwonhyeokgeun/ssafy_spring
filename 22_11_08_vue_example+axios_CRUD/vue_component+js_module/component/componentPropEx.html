@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <!-- 제품(이름, 가격) 목록(캠핑)을 보여주는 Component를 만들고
+      할인행서를 진행하기 위해 할인율 0.2 를 부모가 가지고 있는 data로 부터 받아서
+      최종적으로 제품이름, 가격, 할인 가격을 보여주려고 한다.-->
+  <div id="app">
+    <product-list v-bind:get-discount-price="getDiscountPrice" ></product-list>
+  </div>
+
+  
+  <script>
+    
+    let productList=[ //backend에서 받은 자료
+      {name: 'Tent', price: '40000'},
+      {name: 'Tarp', price: '50000'},
+      {name: 'Table', price: '60000'},
+    ]
+
+    Vue.component(
+      
+      'product-list',{
+        props: ['getDiscountPrice'], //인자로 받음, 형식맞춰주기
+        template:`
+        <table>
+          <thead><th>제품명</th> <th>가격</th> <th>할인 가격</th></thead>
+          <tbody>
+            <tr v-for="product in productList" >
+              <td>{{product.name}}</td>
+              <td>{{product.price}}</td>
+              <td>{{getDiscountPrice(product.price)}}</td>
+            </tr>
+          </tbody>
+        </table>
+        `,
+        data(){
+          return{
+            productList:productList,
+          }
+        }
+      }
+    )
+
+    new Vue({
+      el:'#app',
+      data(){
+        return{
+          discountRate:0.2,
+        }
+      },
+
+      methods:{
+        getDiscountPrice(price){
+          return price*(1-this.discountRate);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <!--제품(이름, 가격) 목록(캠핑)을 보여주는 Component를 만들고
+      할인행서를 진행하기 위해 할인율 0.2 를 부모가 가지고 있는 data로 부터 받아서
+      최종적으로 제품이름, 가격, 할인 가격을 보여주려고 한다. -->
+  <!--각 제품앞에 addCart 버튼을 추가해서 장바구니 구현
+      장바구니는 parent인 Vue instance에 있다. 
+      child => parent로 addCart 되는 product를 넘겨야한다.
+  -->
+
+
+  <div id="app">                                           <!-- call-parent이벤트 발생시 fromChild 실행 -->
+    <product></product>
+    <br>
+    <cart></cart>
+  </div>
+
+  <template id="product">
+    <div>
+      <div>텐트 가격 {{ price }} 수량 {{ count }}</div>
+      <button @click="addCart">addCart</button>
+    </div>
+  </template>
+
+  <template id="cart">
+    <div>
+      <div>전체 가격 {{ totalPrice }} 수량 {{ totalCount }}</div>
+    </div>
+
+  </template>
+
+
+  
+  <script>
+    const bus = new Vue(); //event bus
+
+    Vue.component('product',{
+      template:'#product',
+      data(){
+        return{
+          price:2000,
+          count:1,
+        }
+      } ,
+      methods: {
+        addCart(){
+          bus.$emit('addCart', this.price, this.count)
+        }
+        
+      },
+
+    })
+    
+    // addCart 이벤트를 bus로 부터 받고싶다.
+    //컴포넌트가 만들어질 때 bus에 탑승 신청
+    Vue.component('cart',{
+      template:'#cart',
+      data(){
+        return{
+          totalPrice:0,
+          totalCount:0,
+        }
+      } ,
+      methods: {
+        updateCart(price, count){
+          this.totalPrice += price;
+          this.totalCount += count;
+        }
+      },
+      created: function(){
+        //버스에 탑승 신청
+        //addCart 이벤트가 발생하면 updateCart를 호출해 달라 요청
+        bus.$on('addCart', this.updateCart)
+      }
+    })
+
+    new Vue({
+      el:'#app',
+      data(){
+        return{
+  
+        }
+      },
+
+    })
+  </script>
+</body>
+</html>

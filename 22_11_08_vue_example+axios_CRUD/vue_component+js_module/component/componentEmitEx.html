@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <!--제품(이름, 가격) 목록(캠핑)을 보여주는 Component를 만들고
+      할인행서를 진행하기 위해 할인율 0.2 를 부모가 가지고 있는 data로 부터 받아서
+      최종적으로 제품이름, 가격, 할인 가격을 보여주려고 한다. -->
+  <!--각 제품앞에 addCart 버튼을 추가해서 장바구니 구현
+      장바구니는 parent인 Vue instance에 있다. 
+      child => parent로 addCart 되는 product를 넘겨야한다.
+  -->
+
+
+  <div id="app">                                           <!-- call-parent이벤트 발생시 fromChild 실행 -->
+    <product-list v-bind:get-discount-price="getDiscountPrice" v-on:call-parent="fromChild"></product-list>
+    <hr>
+    <h4>장바구니 목록</h4>
+    <ul>
+      <li v-for="(product, index) in cart" :key="index">{{product.name}} {{product.price}}</li>
+    </ul>
+  </div>
+
+  
+  <script>
+    
+    let productList=[ //backend에서 받은 자료
+      {name: 'Tent', price: '40000'},
+      {name: 'Tarp', price: '50000'},
+      {name: 'Table', price: '60000'},
+    ]
+
+    Vue.component(
+      
+      'product-list',{
+        props: ['getDiscountPrice'], //인자로 받음, 형식맞춰주기
+        template:`
+        <table>
+          <thead><th>제품명</th> <th>가격</th> <th>할인 가격</th> <th>담기</th></thead>
+          <tbody>
+            <tr v-for="product in productList" >
+              <td>{{product.name}}</td>
+              <td>{{product.price}}</td>
+              <td>{{getDiscountPrice(product.price)}}</td>
+              <td><button @click="addCart(product, getDiscountPrice(product.price))">addCart</button></td>
+            </tr>
+          </tbody>
+        </table>
+        `,
+        data(){
+          return{
+            productList:productList,
+          }
+        },
+        methods:{
+          addCart(product, discountedPrice){
+            this.$emit('call-parent',product, discountedPrice) //call-parent 이벤트발생시키고 인자로 두개를 가져감
+          }
+        }
+      }
+    )
+
+    new Vue({
+      el:'#app',
+      data(){
+        return{
+          discountRate:0.2,
+          cart:[]
+        }
+      },
+
+      methods:{
+        getDiscountPrice(price){
+          return price*(1-this.discountRate);
+        },
+        fromChild(product, discountedPrice){
+          console.log(product, discountedPrice)
+          let{...product2} = product;//복사
+          product2.price=discountedPrice;  //할인가격을 넣어주기
+          this.cart.push(product2)  //장바구니 추가
+        }
+      }
+    })
+  </script>
+</body>
+</html>

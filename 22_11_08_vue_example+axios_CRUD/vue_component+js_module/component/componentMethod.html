@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+  
+</head>
+<body>
+  
+  <div id="app">
+    <methode-component></methode-component>
+  </div>
+
+  <script>
+    const cmp1 = {
+      template: `
+        <div>
+          <div> 컴포넌트 데이터 & 메소드 : {{ data1 }} {{ func2() }} </div>
+          <button v-on:click="func1"> click </button>
+        </div>
+      `,
+      data: function(){
+        return{
+          data1:200
+        }
+      },
+      methods: {
+        func1: function(){
+          console.log(this)
+          alert(this.data1)
+        },
+        func2: function(){
+          return "func2 message";
+        }
+      }
+
+    }
+
+    
+    new Vue({
+      el:'#app',
+      components: {
+        'methode-component': cmp1
+      }
+    })
+  </script>
+</body>
+</html>
