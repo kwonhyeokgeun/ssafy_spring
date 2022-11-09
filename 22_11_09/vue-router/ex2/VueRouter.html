@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13"></script>
+  <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- bootstrap5 디자인 적용, router를 사용해서 main,login 보이기 -->
+  <!-- 링크를 가진 NavHeader를 추가-->
+  <div id="app">
+    <!-- nav header는 항상 보임-->
+    <nav-header></nav-header>
+
+    <!-- router에 의해 제어되는 component가 보이는 영역 -->
+    <router-view></router-view>
+
+  </div>
+
+  <script type="module">
+    //별도의 js에서 component를 만들고 import
+    //import하려면 strict 모드를 사용, type="module"
+
+    //import
+    import NavHeader from"./components/NavHeader.js";
+    import Main from"./components/Main.js";
+    import Login from"./components/Login.js";
+
+    //NavHeader는 항상 보이도록하기위해 제어를 받지 않음
+
+    //router 적용
+    var router = new VueRouter({
+      routes: [
+        {path:'/', component: Main},  //기본일때 Main이 보임
+        {path:'/login', component: Login},
+        {path:'/main', component: Main},
+      ]
+    })
+
+    //vue instance + component
+    new Vue({
+      el:'#app',
+      router, //라우터 적용
+      components:{ 
+        NavHeader  //NavHeader를 보일 수 있도록 컴포넌트로
+      },
+      
+    })
+
+  </script>
+  
+</body>
+</html>

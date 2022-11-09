@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13"></script>
+  <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- bootstrap5 디자인 적용, router 없이 전체 component 보이기 -->
+  <div id="app">
+    <main-component></main-component>
+    <login-component></login-component>
+  </div>
+
+  <script type="module">
+    //별도의 js에서 component를 만들고 import
+    //import하려면 strict 모드를 사용, type="module"
+
+    //import
+    import Main from"./components/Main.js";
+    import Login from"./components/Login.js";
+
+    //vue instance + component
+    new Vue({
+      el:'#app',
+      components: {
+        'main-component' : Main, //import한거
+        'login-component' : Login
+      }
+
+    })
+
+  </script>
+  
+</body>
+</html>
