@@ -3,16 +3,8 @@
     <h4 class="text-center mt-3">게시판</h4>
 
     <div class="input-group mb-3 mt-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search"
-        v-model="searchWord"
-        @keydown.enter="boardList"
-      />
-      <button class="btn btn-success" type="button" @click="boardList">
-        Search
-      </button>
+      <input type="text" class="form-control" placeholder="Search" v-model="searchWord" @keydown.enter="boardList" />
+      <button class="btn btn-success" type="button" @click="boardList">Search</button>
     </div>
 
     <table class="table table-hover">
@@ -26,12 +18,7 @@
         </tr>
       </thead>
       <tbody id="boardTbody">
-        <tr
-          v-for="(board, index) in list"
-          :key="index"
-          style="cursor: pointer"
-          @click="boardDetail(board.boardId)"
-        >
+        <tr v-for="(board, index) in list" :key="index" style="cursor: pointer" @click="boardDetail(board.boardId)">
           <td>{{ board.boardId }}</td>
           <td>{{ board.userName }}</td>
           <td>{{ board.title }}</td>
@@ -50,32 +37,23 @@
       v-on:call-parent-move-page="movePage"
     >
     </PaginationUI>
-    <button class="btn btn-primary" type="button" @click="showInsertModal">
-      글쓰기
-    </button>
+    <button class="btn btn-primary" type="button" @click="showInsertModal">글쓰기</button>
     <insert-modal v-on:call-parent-insert="closeAfterInsert"></insert-modal>
-    <detail-modal
-      v-bind:board="board"
-      v-on:call-parent-change-to-update="changeToUpdate"
-      v-on:call-parent-change-to-delete="changeToDelete"
-    ></detail-modal>
-    <update-modal
-      v-bind:board="board"
-      v-on:call-parent-update="closeAfterUpdate"
-    ></update-modal>
+    <detail-modal v-bind:board="board" v-on:call-parent-change-to-update="changeToUpdate" v-on:call-parent-change-to-delete="changeToDelete"></detail-modal>
+    <update-modal v-bind:board="board" v-on:call-parent-update="closeAfterUpdate"></update-modal>
   </div>
 </template>
 
 <script>
 import http from "@/common/axios";
-import util from "@/common/util.js"  //util.js import
-import PaginationUI from './PaginationUI.vue';
+import util from "@/common/util.js"; //util.js import
+import PaginationUI from "./PaginationUI.vue";
 
-import InsertModal from "./modals/InsertModal.vue" //vue 컴포넌트
-import DetailModal from "./modals/DetailModal.vue" //vue 컴포넌트
-import UpdateModal from "./modals/UpdateModal.vue"
+import InsertModal from "./modals/InsertModal.vue"; //vue 컴포넌트
+import DetailModal from "./modals/DetailModal.vue"; //vue 컴포넌트
+import UpdateModal from "./modals/UpdateModal.vue";
 
-import {Modal} from "bootstrap"; //vue 컴포넌트에서 bootstrap modal을 사용하기 위함
+import { Modal } from "bootstrap"; //vue 컴포넌트에서 bootstrap modal을 사용하기 위함
 
 export default {
   components: { PaginationUI, InsertModal, DetailModal, UpdateModal },
@@ -169,19 +147,9 @@ export default {
           // 날짜, 시간 분리
           let { regDt } = data.dto;
           let boardNew = {
-            regDate: util.makeDateStr(
-              regDt.date.year,
-              regDt.date.month,
-              regDt.date.day,
-              "-"
-            ),
+            regDate: util.makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, "-"),
 
-            regTime: util.makeTimeStr(
-              regDt.time.hour,
-              regDt.time.minute,
-              regDt.time.second,
-              ":"
-            ),
+            regTime: util.makeTimeStr(regDt.time.hour, regDt.time.minute, regDt.time.second, ":"),
             ...data.dto, // 3 dot operator rest
           };
 
@@ -202,27 +170,28 @@ export default {
       this.detailModal.hide();
       this.updateModal.show();
     },
-    
+
     closeAfterUpdate() {
       this.updateModal.hide();
       this.boardList();
     },
     changeToDelete() {
       this.detailModal.hide();
-      var $this=this;
-      this.$alertify.confirm("삭제하시겠습니까?",
-        function(){
+      var $this = this;
+      this.$alertify.confirm(
+        "삭제하시겠습니까?",
+        function () {
           $this.boardDelete();
         },
-        function(){
-          console.log("삭제 취소함")
+        function () {
+          console.log("삭제 취소함");
         }
-      )
+      );
     },
-    async boardDelete(){
-      try{
-        let response = await http.delete("/boards/"+this.board.boardId)
-        let{data} = response;
+    async boardDelete() {
+      try {
+        let response = await http.delete("/boards/" + this.board.boardId);
+        let { data } = response;
         if (data.reslt == "login") {
           //세션 타임아웃
           this.$router.push("/login");
@@ -234,7 +203,7 @@ export default {
         console.error(error);
         this.$alertify.error("서버에 문제가 생겼습니다.");
       }
-    }
+    },
   },
   created: function () {
     this.boardList();
